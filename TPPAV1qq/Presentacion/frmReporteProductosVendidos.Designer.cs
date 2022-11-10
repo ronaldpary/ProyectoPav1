@@ -84,7 +84,7 @@
             // btnConsultar
             // 
             this.btnConsultar.Location = new System.Drawing.Point(665, 69);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(67, 31);
             this.btnConsultar.TabIndex = 20;
@@ -95,7 +95,7 @@
             // dtpHasta
             // 
             this.dtpHasta.Location = new System.Drawing.Point(546, 17);
-            this.dtpHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpHasta.Margin = new System.Windows.Forms.Padding(2);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(186, 20);
             this.dtpHasta.TabIndex = 19;
@@ -113,7 +113,7 @@
             // dtpDesde
             // 
             this.dtpDesde.Location = new System.Drawing.Point(231, 17);
-            this.dtpDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDesde.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(185, 20);
             this.dtpDesde.TabIndex = 17;
@@ -152,9 +152,10 @@
             this.Controls.Add(this.dtpDesde);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rpvProductosVendidos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmReporteProductosVendidos";
             this.Text = "frmReporteProductosVendidos";
+            this.Load += new System.EventHandler(this.frmReporteProductosVendidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);

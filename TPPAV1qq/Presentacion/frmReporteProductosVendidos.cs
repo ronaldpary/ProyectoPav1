@@ -37,9 +37,14 @@ namespace TPPav1.Presentacion
             else
             {
                 rpvProductosVendidos.LocalReport.DataSources.Clear();
-                rpvProductosVendidos.LocalReport.DataSources.Add(new ReportDataSource("DatosProductosVendidos", oProducto.RecuperarVendidos(dtpDesde.Value.ToString("dd/MM/yyyy"), dtpHasta.Value.ToString("dd/MM/yyyy"), nudCantidad.Value.ToString(), nudTotal.Value.ToString())));
+                rpvProductosVendidos.LocalReport.DataSources.Add(new ReportDataSource("DatosProductosVendidos", oProducto.RecuperarVendidos(dtpDesde.Value.ToString("yyyy/MM/dd"), dtpHasta.Value.ToString("yyyy/MM/dd"), nudCantidad.Value.ToString(), nudTotal.Value.ToString())));
                 this.rpvProductosVendidos.RefreshReport();
             }
+        }
+
+        private void frmReporteProductosVendidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

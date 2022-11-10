@@ -51,11 +51,11 @@ namespace TPPav1.Presentacion
 
                 if (auxTodos)
                 {
-                    rpvClientesMasCompras.LocalReport.DataSources.Add(new ReportDataSource("DatosClientesConMasCompras", oFactura.RecuperarPorFecha(dtpDesde.Value.ToString("dd/MM/yyyy"), dtpHasta.Value.ToString("dd/MM/yyyy"))));
+                    rpvClientesMasCompras.LocalReport.DataSources.Add(new ReportDataSource("DatosClientesConMasCompras", oFactura.RecuperarPorFecha(dtpDesde.Value.ToString("yyyy/MM/dd"), dtpHasta.Value.ToString("yyyy/MM/dd"))));
                 }
                 else
                 {
-                    rpvClientesMasCompras.LocalReport.DataSources.Add(new ReportDataSource("DatosClientesConMasCompras", oFactura.RecuperarPorFechaYProducto(dtpDesde.Value.ToString("dd/MM/yyyy"), dtpHasta.Value.ToString("dd/MM/yyyy"), cboProductos.SelectedValue.ToString())));
+                    rpvClientesMasCompras.LocalReport.DataSources.Add(new ReportDataSource("DatosClientesConMasCompras", oFactura.RecuperarPorFechaYProducto(dtpDesde.Value.ToString("yyyy/MM/dd"), dtpHasta.Value.ToString("yyyy/MM/dd"), cboProductos.SelectedValue.ToString())));
                 }
                 this.rpvClientesMasCompras.RefreshReport();
             }
