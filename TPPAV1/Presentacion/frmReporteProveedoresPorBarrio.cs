@@ -30,8 +30,19 @@ namespace TPPav1.Presentacion
             CargarComboLocalidad(cboLocalidad, oLocalidad.traerTodos());
             CargarComboBarrio(cboBarrio, oBarrio.traerTodosB());
             CargarComboCantidad(cboCantidad);
+            CargarComboVigencia(cboVigencia);
             
             //this.reportViewer1.RefreshReport();
+        }
+
+        private void CargarComboVigencia(ComboBox combo)
+        {
+            combo.Items.Clear();           
+            combo.Items.Insert(0, "Vigencia no activa");
+            combo.Items.Insert(1, "Vigencia activa");
+            combo.Items.Insert(2, "Con/sin vigencia");
+            combo.SelectedIndex = 2;
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void CargarComboCantidad(ComboBox combo)
@@ -63,17 +74,17 @@ namespace TPPav1.Presentacion
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            //string consultaSQL = "select l.nombreLocalidad as Localidad, b.nombreBarrio as Barrio, count(*) as Cantidad from Localidades l inner join Barrios b on (l.idLocalidad = b.idLocalidad) inner join Proveedores p on (p.idBarrio = b.idBarrio) group by b.nombreBarrio, l.nombreLocalidad";
-            //rpvProveedores.LocalReport.DataSources.Clear();
-            //rpvProveedores.LocalReport.DataSources.Add(new ReportDataSource("DatosProveedoresPorBarrio", BDHelper.ObtenerInstancia().Consultar(consultaSQL)));
-            //rpvProveedores.RefreshReport();
-
+            if (dtpDesde.Value > dtpHasta.Value)
+            {
+                MessageBox.Show("Fechas errones");
+                dtpDesde.Focus();
+                return;
+            }
+            
             string _localidad, _barrio;
             _localidad = _barrio = string.Empty;
-            int _cantidad = -1;
-
-            //DataTable tabla = oProveedor.TraerFiltrados();
-            //this.dsProveedoresBindingSource.DataSource = oProveedor.TraerFiltrados();
+            int _cantidad, _vigencia;
+            _cantidad = _vigencia = -1;
 
             if (cboLocalidad.SelectedIndex != -1)
                 _localidad = cboLocalidad.SelectedValue.ToString();
@@ -81,9 +92,13 @@ namespace TPPav1.Presentacion
                 _barrio = cboBarrio.SelectedValue.ToString();
             if (cboCantidad.SelectedIndex != -1)
                 _cantidad = cboCantidad.SelectedIndex;
+            if (cboVigencia.SelectedIndex != 2)
+            {
+                _vigencia = cboVigencia.SelectedIndex;
+            }
 
             rpvProveedores.LocalReport.DataSources.Clear();
-            rpvProveedores.LocalReport.DataSources.Add(new ReportDataSource("DatosProveedoresPorBarrio", oProveedor.TraerFiltrados(_localidad, _barrio, _cantidad)));
+            rpvProveedores.LocalReport.DataSources.Add(new ReportDataSource("DatosProveedoresPorBarrio", oProveedor.TraerFiltrados(_localidad, _barrio, _cantidad, _vigencia, dtpDesde.Value.ToString("yyyy/MM/dd"), dtpHasta.Value.ToString("yyyy/MM/dd"))));
             this.rpvProveedores.RefreshReport();
 
         }

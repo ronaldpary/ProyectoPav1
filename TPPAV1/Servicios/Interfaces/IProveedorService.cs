@@ -19,6 +19,6 @@ namespace TPPav1.Servicios.Interfaces
         int actualizarProveedor(Proveedor oProveedor);
 
         int eliminarProveedor(int idProveedor);
-        DataTable TraerFiltrados(string loc, string bar, int cant);
+        DataTable TraerFiltrados(string loc, string bar, int cant, int vig, string desde, string hasta);
     }
 }

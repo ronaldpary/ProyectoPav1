@@ -57,7 +57,7 @@ namespace TPPav1.Datos.Daos
             return lista;
         }
 
-        public DataTable RecuperarFiltrados(string loc, string bar, int cant)
+        public DataTable RecuperarFiltrados(string loc, string bar, int cant, int vig, string desde, string hasta)
         {
             string consultaSQL = "select l.nombreLocalidad as Localidad, b.nombreBarrio as Barrio, count(*) as Cantidad from Localidades l inner join Barrios b on (l.idLocalidad = b.idLocalidad) inner join Proveedores p on (p.idBarrio = b.idBarrio)";
 
@@ -65,6 +65,25 @@ namespace TPPav1.Datos.Daos
                 consultaSQL += " where l.idLocalidad=" + loc;
             if (bar != string.Empty)
                 consultaSQL += " and b.idBarrio=" + bar;
+
+            if (vig != -1)
+            {
+                if (vig == 0)
+                {
+                    consultaSQL += " and p.vigencia=" + vig + " and p.fechaAlta > '" + desde +
+                        "' and p.fechaBaja < '" + hasta + "'";
+                }
+                else
+                {
+                    consultaSQL += " and p.vigencia=" + vig + " and p.fechaAlta between '" + desde +
+                        "' and '" + hasta + "'";
+                }
+            }
+            else
+            {
+                consultaSQL += " and p.fechaAlta between '" + desde +
+                        "' and '" + hasta + "'";
+            }
 
             consultaSQL += " group by b.nombreBarrio, l.nombreLocalidad";
 

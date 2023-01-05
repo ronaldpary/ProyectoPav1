@@ -16,6 +16,6 @@ namespace TPPav1.Datos.Interfaces
         int CrearP(Proveedor idProveedor);
         int ActualizarP(Proveedor idProveedor);
         int EliminarP(int idProveedor);
-        DataTable RecuperarFiltrados(string loc, string bar, int cant);
+        DataTable RecuperarFiltrados(string loc, string bar, int cant, int vig, string desde, string hasta);
     }
 }

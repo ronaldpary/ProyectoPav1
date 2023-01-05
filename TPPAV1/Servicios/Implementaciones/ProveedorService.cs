@@ -45,9 +45,9 @@ namespace TPPav1.Servicios.Implementaciones
             return dao.EliminarP(idProveedor);
         }
 
-        public DataTable TraerFiltrados(string loc, string bar, int cant)
+        public DataTable TraerFiltrados(string loc, string bar, int cant, int vig, string desde, string hasta)
         {
-            return dao.RecuperarFiltrados(loc, bar, cant);
+            return dao.RecuperarFiltrados(loc, bar, cant, vig, desde, hasta);
         }
     }
 }
