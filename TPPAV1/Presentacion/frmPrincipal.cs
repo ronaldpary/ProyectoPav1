@@ -19,8 +19,8 @@ namespace TPPav1.Presentacion
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            frmLogin fl = new frmLogin();
-            fl.ShowDialog();
+            //frmLogin fl = new frmLogin();
+            //fl.ShowDialog();
         }
 
         private void administarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
